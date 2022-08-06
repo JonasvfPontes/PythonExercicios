@@ -1,19 +1,13 @@
 def voto(nascimento=0):
-    import datetime
+    from datetime import date
     vt = ' '
-    idade = datetime.date.today().year - nascimento
+    idade = date.today().year - nascimento
     if idade < 16:
-        vt = 'VOTO NEGADO'
-        print(f'Com {idade} anos: {vt}')
-    elif 16 <= idade < 18 or idade >= 65:
-        vt = 'VOTO OPCIONAL'
-        print(f'Com {idade} anos: {vt}')
+        return f'Com {idade} anos: NÃO VOTA.'
+    elif 16 <= idade < 18 or idade > 65:
+        return f'Com {idade} anos: VOTO OPCIONAL'
     else:
-        vt = 'VOTO OBRIGATÓRIO'
-        print(f'Com {idade} anos: {vt}')
+        return f'Com {idade} anos: VOTO OBRIGATÓRIO'
 
 
-
-print('_' * 20)
-nas = int(input('Em que ano você nasceu? '))
-voto(nas)
+print(voto(int(input('Em que ano você nasceu? '))))
